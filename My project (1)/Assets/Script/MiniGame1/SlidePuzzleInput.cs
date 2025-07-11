@@ -16,7 +16,6 @@ public class SlidePuzzleInput : MonoBehaviour
 
     public void OnPointer(InputAction.CallbackContext context)
     {
-        Debug.Log("Here");
         pointerPos = context.ReadValue<Vector2>();
     }
 
