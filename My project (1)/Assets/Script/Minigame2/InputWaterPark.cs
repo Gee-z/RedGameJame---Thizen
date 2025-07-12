@@ -7,6 +7,7 @@ public class InputWaterPark : MonoBehaviour
 {
     [SerializeField] private Camera mainCamera;
     [SerializeField] private PlayerMove playerMover;
+    [SerializeField] private WaterParkGameOver gameOver;
 
     private Vector2 pointerPos;
     public void OnPointer(InputAction.CallbackContext context)
@@ -33,6 +34,10 @@ public class InputWaterPark : MonoBehaviour
             else if (hit.CompareTag("Right"))
             {
                 playerMover.MoveRight();
+            }
+            else if (hit.CompareTag("Selection"))
+            {
+                gameOver.BackToMenu();
             }
         }
     }

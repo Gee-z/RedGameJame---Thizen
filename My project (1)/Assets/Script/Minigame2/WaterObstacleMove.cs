@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class WaterObstacleMove : MonoBehaviour
 {
+    public WaterParkGameOver gameOverHandler;
     void Update()
     {
         if (transform.position.y < -10f)
@@ -22,7 +23,13 @@ public class WaterObstacleMove : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Destroy(other.gameObject);
+            Destroy(other.gameObject); 
+
+            if (gameOverHandler != null)
+            {
+                gameOverHandler.ShowGameOver(); 
+            }
+
         }
     }
 }

@@ -9,6 +9,8 @@ public class WaterTimer : MonoBehaviour
     private float timer;
 
     public TMP_Text timerText;
+    private bool gameEnded = false;
+
     void Start()
     {
         timer = timeLimit;
@@ -16,16 +18,21 @@ public class WaterTimer : MonoBehaviour
     }
     void Update()
     {
+        if (gameEnded) return;
         timer -= Time.deltaTime;
         timerText.text = Mathf.CeilToInt(timer).ToString();
 
         if (timer <= 0)
-            EndGame(true);
+        {
+            gameEnded = true;
+            timerText.text = "You Win!";
+            Time.timeScale = 0f;
+        }
     }
 
-    void EndGame(bool win)
+    public void StopTimer()
     {
-        timerText.text = win ? "You Win!" : "Time's Up!";
-        Time.timeScale = 0f;
+        gameEnded = true;
+        timerText.gameObject.SetActive(false);
     }
 }
