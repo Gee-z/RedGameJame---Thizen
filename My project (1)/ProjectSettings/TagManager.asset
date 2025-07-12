@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Left
   - Right
+  - DeadZone
   layers:
   - Default
   - TransparentFX
