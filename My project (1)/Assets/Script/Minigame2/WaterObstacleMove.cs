@@ -23,8 +23,8 @@ public class WaterObstacleMove : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Destroy(other.gameObject); 
-
+            Destroy(other.gameObject);
+            Time.timeScale = 0f;
             if (gameOverHandler != null)
             {
                 gameOverHandler.ShowGameOver(); 

@@ -27,7 +27,6 @@ public class WaterParkGameOver : MonoBehaviour
 
     IEnumerator FadeAndShowText()
     {
-        FindObjectOfType<WaterTimer>().StopTimer();
 
         SpriteRenderer sr = blackScreen.GetComponent<SpriteRenderer>();
 
