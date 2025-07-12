@@ -10,9 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 7107421395057308875}
   - component: {fileID: 3707201657499835568}
+  - component: {fileID: 858925894534034901}
   - component: {fileID: 7296287251075952215}
   - component: {fileID: 6179221133939713845}
   - component: {fileID: -4916077712344207557}
+  - component: {fileID: 3150961874540720907}
   m_Layer: 0
   m_Name: ObstacleMid
   m_TagString: Untagged
@@ -87,6 +89,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &858925894534034901
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4140354475325523367}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da00767b23e4541438002f4be23e47e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!61 &7296287251075952215
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -119,7 +133,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.02985005, y: -0.26555002}
+  m_Offset: {x: 0.02985005, y: -0.5919917}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -130,7 +144,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.25128812, y: 0.89112234}
+  m_Size: {x: 0.25128812, y: 0.23823896}
   m_EdgeRadius: 0
 --- !u!95 &6179221133939713845
 Animator:
@@ -165,3 +179,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a4a089e2330f714080d4b297ed01a8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameOverHandler: {fileID: 0}
+--- !u!114 &3150961874540720907
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4140354475325523367}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 432ba10895b4d424ab1f6f8cccea63ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprites:
+  - {fileID: 695865464691939010, guid: 5de6cd5154a6a5f4fb3d8bd1a54fe180, type: 3}
+  - {fileID: -6440550563809792554, guid: 5de6cd5154a6a5f4fb3d8bd1a54fe180, type: 3}
+  - {fileID: 4497907454866740843, guid: 5de6cd5154a6a5f4fb3d8bd1a54fe180, type: 3}
+  frameRate: 0.15

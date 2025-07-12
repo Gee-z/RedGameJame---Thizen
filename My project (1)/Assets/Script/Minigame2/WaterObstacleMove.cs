@@ -7,17 +7,11 @@ public class WaterObstacleMove : MonoBehaviour
     public WaterParkGameOver gameOverHandler;
     void Update()
     {
-        if (transform.position.y < -10f)
-        {
-            Destroy(gameObject);
-        }
+
 
     }
 
-    public void DestroyObs()
-    {
-        Destroy(gameObject);
-    }
+
 
     void OnTriggerEnter2D(Collider2D other)
     {

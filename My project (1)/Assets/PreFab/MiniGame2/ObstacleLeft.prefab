@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 9095700404483312745}
   - component: {fileID: 1443484099493699397}
+  - component: {fileID: 7090081289458765361}
+  - component: {fileID: -5469557216283560153}
   - component: {fileID: 5832886379854816433}
   - component: {fileID: 8710789671671700579}
   - component: {fileID: -4768088624074652937}
@@ -87,6 +89,35 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &7090081289458765361
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6097036510631686909}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 432ba10895b4d424ab1f6f8cccea63ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprites:
+  - {fileID: 695865464691939010, guid: 5de6cd5154a6a5f4fb3d8bd1a54fe180, type: 3}
+  - {fileID: -6440550563809792554, guid: 5de6cd5154a6a5f4fb3d8bd1a54fe180, type: 3}
+  - {fileID: 4497907454866740843, guid: 5de6cd5154a6a5f4fb3d8bd1a54fe180, type: 3}
+  frameRate: 0.15
+--- !u!114 &-5469557216283560153
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6097036510631686909}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da00767b23e4541438002f4be23e47e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!61 &5832886379854816433
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -119,7 +150,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.029214524, y: -0.26832062}
+  m_Offset: {x: 0.029214524, y: -0.56602585}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -130,7 +161,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.21076424, y: 0.89666355}
+  m_Size: {x: 0.21076424, y: 0.3012531}
   m_EdgeRadius: 0
 --- !u!95 &8710789671671700579
 Animator:
@@ -165,3 +196,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a4a089e2330f714080d4b297ed01a8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameOverHandler: {fileID: 0}

@@ -11,6 +11,7 @@ public class PlayerMove : MonoBehaviour
     private int currentLane = 1;
     private Vector3 targetPosition;
     private Quaternion targetRotation;
+    public float Speed = 10f;
     void Start()
     {
         SetTargetPosition();
@@ -19,7 +20,7 @@ public class PlayerMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = Vector3.MoveTowards(transform.position, targetPosition, 10f * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, targetPosition, Speed * Time.deltaTime);
         transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, 300f * Time.deltaTime);
     }
 
