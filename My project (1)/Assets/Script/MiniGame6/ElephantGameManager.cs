@@ -13,50 +13,54 @@ public class ElephantGameManager : MonoBehaviour
 
     private List<FoodItem> currentFoods = new List<FoodItem>();
     private Queue<string> thoughtQueue = new Queue<string>();
-    private float thoughtDelay = 1.5f;
     private bool acceptingInput = false;
 
     private void Start()
     {
-        StartNewRound();
+        SpawnPresetFoods();
+        ShowNextThought(); 
     }
 
-    private void StartNewRound()
+    private void SpawnPresetFoods()
     {
         foreach (var food in currentFoods)
         {
             if (food != null)
                 Destroy(food.gameObject);
         }
+
         currentFoods.Clear();
         thoughtQueue.Clear();
         acceptingInput = false;
 
-        for (int i = 0; i < spawnPoints.Length; i++)
+
+        for (int i = 0; i < spawnPoints.Length && i < foodItems.Count; i++)
         {
-            int rand = Random.Range(0, foodItems.Count);
-            GameObject newFood = Instantiate(foodItems[rand], spawnPoints[i].position, Quaternion.identity);
+            GameObject newFood = Instantiate(foodItems[i], spawnPoints[i].position, Quaternion.identity);
             FoodItem foodItem = newFood.GetComponent<FoodItem>();
             currentFoods.Add(foodItem);
             thoughtQueue.Enqueue(foodItem.itemID);
         }
-
-        StartCoroutine(ShowThoughts());
     }
 
-    private IEnumerator ShowThoughts()
+    private void ShowNextThought()
     {
-        foreach (var foodID in thoughtQueue)
+        if (thoughtQueue.Count == 0)
         {
-            FoodItem target = currentFoods.Find(f => f.itemID == foodID);
-            if (target != null)
-            {
-                thinkingSprite.sprite = target.GetComponent<SpriteRenderer>().sprite;
-                yield return new WaitForSeconds(thoughtDelay);
-            }
+            thinkingSprite.sprite = null;
+            Debug.Log("Win");
+            acceptingInput = false;
+            return;
         }
 
-        acceptingInput = true;
+        string nextID = thoughtQueue.Peek();
+        FoodItem target = currentFoods.Find(f => f != null && f.itemID == nextID);
+
+        if (target != null)
+        {
+            thinkingSprite.sprite = target.GetComponent<SpriteRenderer>().sprite;
+            acceptingInput = true;
+        }
     }
 
     public void ClickedFood(Vector2 worldPoint)
@@ -67,17 +71,22 @@ public class ElephantGameManager : MonoBehaviour
         if (hit != null)
         {
             FoodItem food = hit.GetComponent<FoodItem>();
-            if (food != null && food.itemID == thoughtQueue.Peek())
+            if (food != null)
             {
-                thoughtQueue.Dequeue();
-                currentFoods.Remove(food);
-                Destroy(food.gameObject);
-
-                if (thoughtQueue.Count == 0)
+                if (food.itemID == thoughtQueue.Peek())
                 {
-                    // Speed up and start next round
-                    thoughtDelay = Mathf.Max(0.5f, thoughtDelay - 0.2f);
-                    Invoke(nameof(StartNewRound), 1f);
+                    thoughtQueue.Dequeue();
+                    currentFoods.Remove(food);
+                    Destroy(food.gameObject);
+
+                    acceptingInput = false;
+                    Invoke(nameof(ShowNextThought), 0.5f); 
+                }
+                else
+                {
+                    acceptingInput = false;
+                    Debug.Log("Lose");
+                    thinkingSprite.sprite = null;
                 }
             }
         }

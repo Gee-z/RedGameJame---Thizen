@@ -12,7 +12,6 @@ public class InputElephantGame : MonoBehaviour
 
     public void OnPointer(InputAction.CallbackContext context)
     {
-        Debug.Log("Here");
         pointerPos = context.ReadValue<Vector2>();
     }
 
