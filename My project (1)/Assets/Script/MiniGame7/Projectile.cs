@@ -18,6 +18,8 @@ public class Projectile : MonoBehaviour
         {
             Debug.Log("hit");
             Destroy(gameObject);
+
+            Time.timeScale = 0f;
         }
     }
 }

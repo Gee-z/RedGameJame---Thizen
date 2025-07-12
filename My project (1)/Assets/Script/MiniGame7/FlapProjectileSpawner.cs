@@ -20,7 +20,8 @@ public class FlapProjectileSpawner : MonoBehaviour
     [SerializeField] private TMP_Text timerText;
 
     [Header("Coin Spawn")]
-    [SerializeField] private Transform coinSpawnTransform;
+    [SerializeField] private float coinSpawnInterval = 8f;
+    private float nextCoinTime = 8f;
 
     [Header("Timing")]
     [SerializeField] private float spawnInterval = 2f;
@@ -28,22 +29,31 @@ public class FlapProjectileSpawner : MonoBehaviour
     [SerializeField] private float warningBlinkRate = 0.2f;
 
     private float timer = 0f;
+    private float timerShown = 20f;
     private bool coinSpawned = false;
 
     private void Start()
     {
+        Time.timeScale = 1f;
         StartCoroutine(SpawnRoutine());
     }
 
     private void Update()
     {
         timer += Time.deltaTime;
-        timerText.text = Mathf.FloorToInt(timer).ToString();
+        timerShown -= Time.deltaTime;
+        timerText.text = Mathf.FloorToInt(timerShown).ToString();
 
-        if (timer >= 60f && !coinSpawned)
+        if (timer >= nextCoinTime)
         {
-            coinSpawned = true;
-            Instantiate(coinPrefab, coinSpawnTransform.position, Quaternion.identity);
+            Instantiate(coinPrefab, xTransform.position, Quaternion.identity);
+            nextCoinTime += coinSpawnInterval;
+        }
+
+        if (timer > 20)
+        {
+            Time.timeScale = 0f;
+            Debug.Log("Win");
         }
     }
     private IEnumerator SpawnRoutine()
@@ -84,9 +94,9 @@ public class FlapProjectileSpawner : MonoBehaviour
 
     private int GetSpawnCountForTime(float time)
     {
-        if (time >= 60f) return 4;
-        if (time >= 40f) return 3;
-        if (time >= 20f) return 2;
+        if (time >= 15f) return 4;
+        if (time >= 10f) return 3;
+        if (time >= 5f) return 2;
         return 1;
     }
 
