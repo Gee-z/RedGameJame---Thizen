@@ -7,6 +7,8 @@ TagManager:
   - Left
   - Right
   - DeadZone
+  - Reject
+  - Approve
   layers:
   - Default
   - TransparentFX
