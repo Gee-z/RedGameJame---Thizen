@@ -55,9 +55,16 @@ public class WaterParkGameOver : MonoBehaviour
         sr.color = c;
     }
 
-    public void BackToMenu()
+    public void retryButton()
     {
         Time.timeScale = 1f;
-        SceneManager.LoadScene("Selection");
+        SceneManager.LoadScene("MiniGame2");
+        SavedGameData.instance.ResetGameData();
+    }
+
+    public void upgradeButton()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("Upgrade");
     }
 }

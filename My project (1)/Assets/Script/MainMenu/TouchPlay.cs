@@ -41,6 +41,7 @@ public class TouchPlay : MonoBehaviour
 
     void LoadNextScene()
     {
+        SavedGameData.instance.ResetGameData();
         int currentIndex = SceneManager.GetActiveScene().buildIndex;
         SceneManager.LoadScene(currentIndex + 1);
     }

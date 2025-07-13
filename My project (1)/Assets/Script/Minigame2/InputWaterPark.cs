@@ -35,9 +35,13 @@ public class InputWaterPark : MonoBehaviour
             {
                 playerMover.MoveRight();
             }
-            else if (hit.CompareTag("Selection"))
+            else if (hit.CompareTag("MiniGame2"))
             {
-                gameOver.BackToMenu();
+                gameOver.retryButton();
+            }
+            else if (hit.CompareTag("Upgrade"))
+            {
+                gameOver.upgradeButton();
             }
         }
     }

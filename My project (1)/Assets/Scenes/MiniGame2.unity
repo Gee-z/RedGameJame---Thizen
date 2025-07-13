@@ -351,7 +351,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!212 &135248406
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2633,10 +2633,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blackScreen: {fileID: 135248405}
-  failText: {fileID: 1046574240}
-  backToMenuObject: {fileID: 1085681272}
+  failText1: {fileID: 0}
+  failText2: {fileID: 0}
+  upgradeObject: {fileID: 0}
+  retryObject: {fileID: 0}
   fadeDuration: 1.5
-  textDropSpeed: 200
 --- !u!114 &1077866533
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2663,11 +2664,11 @@ GameObject:
   - component: {fileID: 1085681275}
   m_Layer: 0
   m_Name: Retry
-  m_TagString: Untagged
+  m_TagString: MiniGame2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1085681273
 Transform:
   m_ObjectHideFlags: 0
@@ -4194,11 +4195,11 @@ GameObject:
   - component: {fileID: 1884380649}
   m_Layer: 0
   m_Name: Upgrade
-  m_TagString: Untagged
+  m_TagString: Upgrade
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1884380648
 Transform:
   m_ObjectHideFlags: 0

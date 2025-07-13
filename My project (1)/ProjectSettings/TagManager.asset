@@ -9,6 +9,8 @@ TagManager:
   - DeadZone
   - Reject
   - Approve
+  - MiniGame2
+  - Upgrade
   layers:
   - Default
   - TransparentFX
