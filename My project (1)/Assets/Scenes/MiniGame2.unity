@@ -132,9 +132,9 @@ GameObject:
   m_Component:
   - component: {fileID: 37065634}
   - component: {fileID: 37065639}
+  - component: {fileID: 37065636}
   - component: {fileID: 37065633}
   - component: {fileID: 37065632}
-  - component: {fileID: 37065636}
   - component: {fileID: 37065637}
   - component: {fileID: 37065638}
   m_Layer: 0
@@ -334,6 +334,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b06c0cee45b20be4c87f3f587aeafa6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Shield: {fileID: 950678776}
 --- !u!1 &135248405
 GameObject:
   m_ObjectHideFlags: 0
@@ -1330,6 +1331,7 @@ GameObject:
   m_Component:
   - component: {fileID: 711088682}
   - component: {fileID: 711088681}
+  - component: {fileID: 711088683}
   m_Layer: 0
   m_Name: GameData
   m_TagString: Untagged
@@ -1359,6 +1361,10 @@ MonoBehaviour:
   currentObstacleSpeed: 0.3
   currentObstacleSpawnInterval: 5
   currentTime: 200
+  Shield: {fileID: 0}
+  haveShield: 0
+  isBig: 0
+  currentMult: 1
 --- !u!4 &711088682
 Transform:
   m_ObjectHideFlags: 0
@@ -1374,6 +1380,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &711088683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 711088680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 715c840a9c2f78e4796e7eb719f2c23a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &729210615
 GameObject:
   m_ObjectHideFlags: 0
