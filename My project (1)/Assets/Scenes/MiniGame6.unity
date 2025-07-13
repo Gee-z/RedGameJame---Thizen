@@ -389,6 +389,8 @@ MonoBehaviour:
   - {fileID: 1974179189}
   - {fileID: 676090207}
   thinkingSprite: {fileID: 2030144689}
+  timerText: {fileID: 950613010}
+  totalTime: 20
 --- !u!4 &853705079
 Transform:
   m_ObjectHideFlags: 0

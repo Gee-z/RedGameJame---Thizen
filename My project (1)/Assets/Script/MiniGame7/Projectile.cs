@@ -17,9 +17,15 @@ public class Projectile : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             Debug.Log("hit");
-            Destroy(gameObject);
 
-            Time.timeScale = 0f;
+            StartCoroutine(LoseGame());
         }
+    }
+    private IEnumerator LoseGame()
+    {
+        yield return new WaitForSecondsRealtime(1f);
+        Time.timeScale = 1f;
+        string previousScene = PlayerPrefs.GetString("LastScene", "MiniGame2");
+        UnityEngine.SceneManagement.SceneManager.LoadScene(previousScene);
     }
 }

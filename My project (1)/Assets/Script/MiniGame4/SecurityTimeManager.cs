@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 public class SecurityTimeManager : MonoBehaviour
 {
     public float timeLimit = 30f;
@@ -67,7 +68,27 @@ public class SecurityTimeManager : MonoBehaviour
 
     void EndGame(bool win)
     {
-        timerText.text = win ? "You Win!" : "Time's Up!";
-        Time.timeScale = 0f;
+        StartCoroutine(FinishGame(win));
     }
+
+    IEnumerator FinishGame(bool win)
+    {
+        yield return new WaitForSecondsRealtime(1f); // wait a moment before processing
+        Time.timeScale = 1f;
+        if (win)
+        {
+            if (SavedGameData.instance != null)
+                SavedGameData.instance.AddCoin(50);
+
+            if (CoinUIManager.instance != null)
+                CoinUIManager.instance.PlayCollectAnimation();
+
+            yield return new WaitForSecondsRealtime(1f);
+        }
+
+
+        string previousScene = PlayerPrefs.GetString("LastScene", "MiniGame2");
+        SceneManager.LoadScene(previousScene);
+    }
+
 }

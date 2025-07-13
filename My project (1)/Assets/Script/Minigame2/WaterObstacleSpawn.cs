@@ -6,6 +6,7 @@ public class WaterObstacleSpawn : MonoBehaviour
 {
     [SerializeField] private GameObject[] obstaclePrefabs;
     [SerializeField] private GameObject[] coinPrefabs;
+    [SerializeField] private GameObject[] miniGamePrefab;
     [SerializeField] private Transform[] spawnPositions;
     [SerializeField] private float spawnInterval = 3f;
     public float obstacleSpeed = 1f;
@@ -16,7 +17,7 @@ public class WaterObstacleSpawn : MonoBehaviour
     public float duration = 60f;
 
     private float _elapsedTime;
-
+    private int obstacleCount = 0;
 
     void Update()
     {
@@ -64,6 +65,13 @@ public class WaterObstacleSpawn : MonoBehaviour
                 SpawnCoin(lane[randomLane], savedSpeed);
                 lane.RemoveAt(randomLane);
             }
+
+            if (obstacleCount >= 20)
+            {
+                int randomLane = Random.Range(0, 3);
+                SpawnMiniGame(randomLane, savedSpeed);
+                obstacleCount = 0;
+            }
             yield return new WaitForSeconds(spawnInterval);
         }
     }
@@ -80,10 +88,19 @@ public class WaterObstacleSpawn : MonoBehaviour
         Transform spawnPoint = spawnPositions[lane];
         GameObject Spawnedbject = Instantiate(obstacleToSpawn, spawnPoint.position, obstacleToSpawn.transform.rotation);
         Spawnedbject.GetComponent<Animator>().speed = speed;
+        obstacleCount++;
     }
     private void SpawnCoin(int lane, float speed)
     {
         GameObject obstacleToSpawn = coinPrefabs[lane];
+        Transform spawnPoint = spawnPositions[lane];
+        GameObject Spawnedbject = Instantiate(obstacleToSpawn, spawnPoint.position, obstacleToSpawn.transform.rotation);
+        Spawnedbject.GetComponent<Animator>().speed = speed;
+    }
+
+    private void SpawnMiniGame(int lane, float speed)
+    {
+        GameObject obstacleToSpawn = miniGamePrefab[lane];
         Transform spawnPoint = spawnPositions[lane];
         GameObject Spawnedbject = Instantiate(obstacleToSpawn, spawnPoint.position, obstacleToSpawn.transform.rotation);
         Spawnedbject.GetComponent<Animator>().speed = speed;

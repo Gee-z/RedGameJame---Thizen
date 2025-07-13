@@ -176,6 +176,8 @@ public class PuzzleManager : MonoBehaviour
         puzzleSolved = true;
         Debug.Log("Puzzle solved!");
 
+        FindObjectOfType<TimerManager>()?.StopTimer();
+
         int emptySlotIndex = emptyGridPosition.y * gridWidth + emptyGridPosition.x;
         var fillTile = new GameObject("EmptyFill");
         fillTile.transform.position = slotPositions[emptySlotIndex].position;
@@ -184,5 +186,44 @@ public class PuzzleManager : MonoBehaviour
         sr.sortingOrder = 1;
 
         fillTile.transform.localScale = emptyFillScale;
+
+        StartCoroutine(FinishGame());
+    }
+
+    private IEnumerator FinishGame()
+    {
+        yield return new WaitForSeconds(1f);
+
+        if (SavedGameData.instance != null)
+        {
+            SavedGameData.instance.AddCoin(50);
+        }
+        if (CoinUIManager.instance != null)
+        {
+            CoinUIManager.instance.PlayCollectAnimation();
+        }
+        yield return new WaitForSeconds(1f);
+        Time.timeScale = 1f;
+        string previousScene = PlayerPrefs.GetString("LastScene", "MiniGame2");
+        UnityEngine.SceneManagement.SceneManager.LoadScene(previousScene);
+    }
+
+    public void Lose()
+    {
+        if (puzzleSolved) return; 
+
+        Debug.Log("Puzzle failed!");
+        puzzleSolved = true;
+
+        StartCoroutine(LoseGame());
+    }
+
+    private IEnumerator LoseGame()
+    {
+        yield return new WaitForSeconds(1f);
+        Time.timeScale = 1f;
+
+        string previousScene = PlayerPrefs.GetString("LastScene", "MiniGame2");
+        UnityEngine.SceneManagement.SceneManager.LoadScene(previousScene);
     }
 }

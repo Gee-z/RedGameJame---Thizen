@@ -34,7 +34,6 @@ public class SecurityItemSpawner : MonoBehaviour
 
             group.items.Add(item);
 
-            // Clustered layout
             Vector2 offset = Random.insideUnitCircle * clusterRadius;
             itemObj.transform.localPosition = new Vector3(offset.x, offset.y, 0);
         }

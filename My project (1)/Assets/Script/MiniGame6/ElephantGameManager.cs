@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ElephantGameManager : MonoBehaviour
 {
@@ -15,12 +17,41 @@ public class ElephantGameManager : MonoBehaviour
     private Queue<string> thoughtQueue = new Queue<string>();
     private bool acceptingInput = false;
 
+    public TMP_Text timerText;
+    public float totalTime = 20f;
+    private float timer;
+    private bool gameEnded = false;
+
     private void Start()
     {
-        SpawnPresetFoods();
-        ShowNextThought(); 
+        ResetGame();
     }
 
+    private void ResetGame()
+    {
+        timer = totalTime;
+        gameEnded = false;
+        thinkingSprite.sprite = null;
+
+        SpawnPresetFoods();
+        ShowNextThought();
+    }
+
+    private void Update()
+    {
+        if (gameEnded) return;
+
+        timer -= Time.deltaTime;
+        timerText.text = Mathf.CeilToInt(timer).ToString();
+
+        if (timer <= 0f)
+        {
+            Debug.Log("Lose (timeout)");
+            gameEnded = true;
+            thinkingSprite.sprite = null;
+            StartCoroutine(isLose());
+        }
+    }
     private void SpawnPresetFoods()
     {
         foreach (var food in currentFoods)
@@ -50,6 +81,7 @@ public class ElephantGameManager : MonoBehaviour
             thinkingSprite.sprite = null;
             Debug.Log("Win");
             acceptingInput = false;
+            StartCoroutine(isWin());
             return;
         }
 
@@ -87,8 +119,38 @@ public class ElephantGameManager : MonoBehaviour
                     acceptingInput = false;
                     Debug.Log("Lose");
                     thinkingSprite.sprite = null;
+                    StartCoroutine(isLose());
                 }
             }
         }
     }
+    IEnumerator isWin()
+    {
+        gameEnded = true;
+
+        if (SavedGameData.instance != null)
+            SavedGameData.instance.AddCoin(50);
+
+        if (CoinUIManager.instance != null)
+            CoinUIManager.instance.PlayCollectAnimation();
+
+        yield return new WaitForSecondsRealtime(1f);
+
+        ReturnToMinigameTwo();
+    }
+
+    IEnumerator isLose()
+    {
+        gameEnded = true;
+        yield return new WaitForSecondsRealtime(1f);
+        ReturnToMinigameTwo();
+    }
+
+    void ReturnToMinigameTwo()
+    {
+        Time.timeScale = 1f;
+        string lastScene = PlayerPrefs.GetString("LastScene", "MiniGame2");
+        SceneManager.LoadScene(lastScene);
+    }
+
 }

@@ -17,6 +17,16 @@ public class Coin : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             Debug.Log("hit");
+
+            if (SavedGameData.instance != null)
+            {
+                SavedGameData.instance.AddCoin(5);
+            }
+
+            if (CoinUIManager.instance != null)
+            {
+                CoinUIManager.instance.PlayCollectAnimation();
+            }
             Destroy(gameObject);
         }
     }

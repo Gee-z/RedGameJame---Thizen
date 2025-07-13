@@ -53,7 +53,18 @@ public class FlapProjectileSpawner : MonoBehaviour
         if (timer > 20)
         {
             Time.timeScale = 0f;
+            if (SavedGameData.instance != null)
+            {
+                SavedGameData.instance.AddCoin(50);
+            }
+
+            if (CoinUIManager.instance != null)
+            {
+                CoinUIManager.instance.PlayCollectAnimation();
+            }
             Debug.Log("Win");
+
+            StartCoroutine(isWin());
         }
     }
     private IEnumerator SpawnRoutine()
@@ -113,6 +124,14 @@ public class FlapProjectileSpawner : MonoBehaviour
         }
 
         return new List<float>(positions);
+    }
+    private IEnumerator isWin()
+    {
+        yield return new WaitForSecondsRealtime(1f);
+        Time.timeScale = 1f;
+
+        string previousScene = PlayerPrefs.GetString("LastScene", "MiniGame2");
+        UnityEngine.SceneManagement.SceneManager.LoadScene(previousScene);
     }
 }
 

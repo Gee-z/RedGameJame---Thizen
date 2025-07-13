@@ -2622,6 +2622,10 @@ MonoBehaviour:
   - {fileID: 6097036510631686909, guid: 58052ff82887b4d4cbab19ce791118fd, type: 3}
   - {fileID: 4140354475325523367, guid: 1c0c64f99fdf5614ca876dc2601864d2, type: 3}
   - {fileID: 6330433205010102505, guid: 413967d8178767a4e964bdf5b7d63d52, type: 3}
+  miniGamePrefab:
+  - {fileID: 6097036510631686909, guid: 933cce582a8fb4648a795e25b6b3381e, type: 3}
+  - {fileID: 4140354475325523367, guid: 205debb03ff80b74c9beb287e0ddfcfa, type: 3}
+  - {fileID: 6330433205010102505, guid: c6de1b9a34bbce84598be43ea50ba8cb, type: 3}
   spawnPositions:
   - {fileID: 626492517}
   - {fileID: 1930114668}

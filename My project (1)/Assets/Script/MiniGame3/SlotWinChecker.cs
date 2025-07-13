@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SlotWinChecker : MonoBehaviour
 {
@@ -34,12 +35,12 @@ public class SlotWinChecker : MonoBehaviour
         if (CheckAllSlotsOccupied())
         {
             finish = true;
-            Win();
+            isWin();
         }
         else if (timer <= 0f)
         {
             finish = true;
-            Lose();
+            isLose();
         }
     }
 
@@ -61,15 +62,33 @@ public class SlotWinChecker : MonoBehaviour
         return true;
     }
 
-    void Win()
+    IEnumerator isWin()
     {
         Debug.Log(":D");
-        timerText.text = "WIN!";
+
+        if (SavedGameData.instance != null)
+        {
+            SavedGameData.instance.AddCoin(50);
+        }
+
+        if (CoinUIManager.instance != null)
+        {
+            CoinUIManager.instance.PlayCollectAnimation();
+        }
+        yield return new WaitForSeconds(1f);
+        Time.timeScale = 1f;
+
+        string lastScene = PlayerPrefs.GetString("LastScene", "MiniGame2");
+        SceneManager.LoadScene(lastScene);
     }
 
-    void Lose()
+    IEnumerator isLose()
     {
         Debug.Log(":(");
-        timerText.text = "TIME'S UP!";
+        yield return new WaitForSeconds(1f);
+        Time.timeScale = 1f;
+
+        string lastScene = PlayerPrefs.GetString("LastScene", "MiniGame2");
+        SceneManager.LoadScene(lastScene);
     }
 }

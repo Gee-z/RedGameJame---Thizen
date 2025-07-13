@@ -9,7 +9,15 @@ public class Player : MonoBehaviour
         if (other.CompareTag("DeadZone"))
         {
             Debug.Log("hit");
-            Destroy(gameObject);
+
+            StartCoroutine(LoseGame());
         }
+    }
+    private IEnumerator LoseGame()
+    {
+        yield return new WaitForSecondsRealtime(1f);
+        Time.timeScale = 1f;
+        string previousScene = PlayerPrefs.GetString("LastScene", "MiniGame2");
+        UnityEngine.SceneManagement.SceneManager.LoadScene(previousScene);
     }
 }

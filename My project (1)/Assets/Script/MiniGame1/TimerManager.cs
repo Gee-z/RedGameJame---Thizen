@@ -9,24 +9,36 @@ public class TimerManager : MonoBehaviour
     private float timer;
 
     public TMP_Text timerText;
+    private bool isRunning = true;
     void Start()
     {
-        timer = timeLimit;
-        Time.timeScale = 1f;
+        ResetTimer();
     }
 
     void Update()
     {
+        if (!isRunning) return;
+
         timer -= Time.deltaTime;
         timerText.text = Mathf.CeilToInt(timer).ToString();
 
-        if (timer <= 0)
-            EndGame(false);
+        
     }
 
-    void EndGame(bool win)
+    public void StopTimer()
     {
-        timerText.text = win ? "You Win!" : "Time's Up!";
-        Time.timeScale = 0f;
+        FindObjectOfType<PuzzleManager>()?.Lose();
+        isRunning = false;
+    }
+
+    public void ResetTimer()
+    {
+        timer = timeLimit;
+        isRunning = true;
+        Time.timeScale = 1f;
+        if (timerText != null)
+        {
+            timerText.text = Mathf.CeilToInt(timer).ToString();
+        }
     }
 }
