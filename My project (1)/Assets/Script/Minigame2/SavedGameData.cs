@@ -7,16 +7,21 @@ public class SavedGameData : MonoBehaviour
 {
     public static SavedGameData instance;
     public UnityEvent onHpReduced;
-    public int playerScore;
-    public int playerHp;
     public int playerCoin;
     public float playerSpeed;
+    public float defaultObstacleSpeed = 5f;
+    public float defaultObstacleSpawnInterval = 5f;
+    public float defaultTime = 60f;
+    public float defaultMult = 1f;
+    public int playerScore;
+    public int playerHp;
     public float currentObstacleSpeed;
     public float currentObstacleSpawnInterval;
     public float currentTime;
     public GameObject Shield;
     public bool haveShield = false;
     public bool isBig = false;
+
     public float currentMult = 1f;
     void Awake()
     {
@@ -41,12 +46,12 @@ public class SavedGameData : MonoBehaviour
     }
     public void ReduceHP(int amount = 1)
     {
-        if(haveShield)
+        if (haveShield)
         {
             haveShield = false;
             return;
         }
-        if(isBig)
+        if (isBig)
         {
             AddCoin(10);
             AddScore(50);
@@ -56,8 +61,19 @@ public class SavedGameData : MonoBehaviour
         playerHp -= amount;
     }
     public void Update()
-    {  
+    {
         playerHp = Mathf.Clamp(playerHp, 0, 5); // Ensure playerHp does not exceed 3
+    }
+    public void ResetGameData()
+    {
+        currentObstacleSpeed = defaultObstacleSpeed;
+        currentObstacleSpawnInterval = defaultObstacleSpawnInterval;
+        currentTime = defaultTime;
+        currentMult = defaultMult;
+        playerScore = 0;
+        playerHp = 5;
+        haveShield = false;
+        isBig = false;
     }
 
 }
