@@ -6271,16 +6271,28 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7877943270594094538, guid: 3b8624c321c0bf34293969768f7cc3cf, type: 3}
+      propertyPath: defaultHp
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7877943270594094538, guid: 3b8624c321c0bf34293969768f7cc3cf, type: 3}
       propertyPath: defaultTime
       value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 7877943270594094538, guid: 3b8624c321c0bf34293969768f7cc3cf, type: 3}
       propertyPath: playerSpeed
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7877943270594094538, guid: 3b8624c321c0bf34293969768f7cc3cf, type: 3}
       propertyPath: defaultObstacleSpeed
       value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7877943270594094538, guid: 3b8624c321c0bf34293969768f7cc3cf, type: 3}
+      propertyPath: onHpReduced.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7877943270594094538, guid: 3b8624c321c0bf34293969768f7cc3cf, type: 3}
+      propertyPath: onHpReduced.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 using TMPro;
 public class WaterParkGameOver : MonoBehaviour
 {
+    public static WaterParkGameOver instance;
     public GameObject blackScreen;
     public TextMeshProUGUI failText1;           
     public TextMeshProUGUI failText2;
@@ -16,7 +17,7 @@ public class WaterParkGameOver : MonoBehaviour
     void Start()
     {
         blackScreenRenderer = blackScreen.GetComponent<SpriteRenderer>();
-
+        instance = this;
         failText1.gameObject.SetActive(false);
         failText2.gameObject.SetActive(false);
         failText3.gameObject.SetActive(false);
@@ -45,9 +46,9 @@ public class WaterParkGameOver : MonoBehaviour
         SetAlpha(blackScreenRenderer, 1f);
 
         retryObject.SetActive(true);
-        upgradeObject.SetActive(true);
+        //upgradeObject.SetActive(true);
         failText1.gameObject.SetActive(true);
-        failText2.gameObject.SetActive(true);
+        //failText2.gameObject.SetActive(true);
         failText3.gameObject.SetActive(true);
     }
 

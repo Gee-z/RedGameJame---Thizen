@@ -24,12 +24,7 @@ public class SavedGameData : MonoBehaviour
     public bool isBig = false;
 
     public float currentMult = 1f;
-    private WaterParkGameOver gameOver;
 
-    void Start()
-    {
-        gameOver = FindObjectOfType<WaterParkGameOver>();
-    }
     void Awake()
     {
         if (instance == null)
@@ -67,15 +62,14 @@ public class SavedGameData : MonoBehaviour
         onHpReduced.Invoke();
         SlideSound.instance.PlayHurt();
         playerHp -= amount;
-
-        if(playerHp < 1)
-        {
-            gameOver?.ShowGameOver();
-        }
     }
     public void Update()
     {
-        playerHp = Mathf.Clamp(playerHp, 0, 5); // Ensure playerHp does not exceed 3
+        playerHp = Mathf.Clamp(playerHp, 0, 5);
+        if (playerHp == 0)
+        {
+            WaterParkGameOver.instance.ShowGameOver();
+        }
     }
     public void ResetGameData()
     {
