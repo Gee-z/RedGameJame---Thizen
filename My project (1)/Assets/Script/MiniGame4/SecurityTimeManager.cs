@@ -73,7 +73,7 @@ public class SecurityTimeManager : MonoBehaviour
 
     IEnumerator FinishGame(bool win)
     {
-        yield return new WaitForSecondsRealtime(1f); // wait a moment before processing
+        yield return new WaitForSeconds(1f); // wait a moment before processing
         Time.timeScale = 1f;
         if (win)
         {

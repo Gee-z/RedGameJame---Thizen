@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PuzzleManager : MonoBehaviour
 {
@@ -205,7 +205,7 @@ public class PuzzleManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
         Time.timeScale = 1f;
         string previousScene = PlayerPrefs.GetString("LastScene", "MiniGame2");
-        UnityEngine.SceneManagement.SceneManager.LoadScene(previousScene);
+        SceneManager.LoadScene(previousScene);
     }
 
     public void Lose()
@@ -224,6 +224,6 @@ public class PuzzleManager : MonoBehaviour
         Time.timeScale = 1f;
 
         string previousScene = PlayerPrefs.GetString("LastScene", "MiniGame2");
-        UnityEngine.SceneManagement.SceneManager.LoadScene(previousScene);
+        SceneManager.LoadScene(previousScene);
     }
 }

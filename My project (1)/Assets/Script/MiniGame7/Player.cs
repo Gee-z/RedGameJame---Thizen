@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -15,9 +16,9 @@ public class Player : MonoBehaviour
     }
     private IEnumerator LoseGame()
     {
-        yield return new WaitForSecondsRealtime(1f);
+        yield return new WaitForSeconds(1f);
         Time.timeScale = 1f;
         string previousScene = PlayerPrefs.GetString("LastScene", "MiniGame2");
-        UnityEngine.SceneManagement.SceneManager.LoadScene(previousScene);
+        SceneManager.LoadScene(previousScene);
     }
 }

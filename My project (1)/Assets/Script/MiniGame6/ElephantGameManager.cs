@@ -134,7 +134,7 @@ public class ElephantGameManager : MonoBehaviour
         if (CoinUIManager.instance != null)
             CoinUIManager.instance.PlayCollectAnimation();
 
-        yield return new WaitForSecondsRealtime(1f);
+        yield return new WaitForSeconds(1f);
 
         ReturnToMinigameTwo();
     }
@@ -142,7 +142,7 @@ public class ElephantGameManager : MonoBehaviour
     IEnumerator isLose()
     {
         gameEnded = true;
-        yield return new WaitForSecondsRealtime(1f);
+        yield return new WaitForSeconds(1f);
         ReturnToMinigameTwo();
     }
 
