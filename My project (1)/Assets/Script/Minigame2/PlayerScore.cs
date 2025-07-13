@@ -11,7 +11,7 @@ public class PlayerScore : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(Mathf.Clamp(0.8f - SavedGameData.instance.currentObstacleSpeed,0.3f,3f));
-            score++;
+            score += (int)(1 * SavedGameData.instance.currentMult);
             SavedGameData.instance.playerScore = score;
         }
     }

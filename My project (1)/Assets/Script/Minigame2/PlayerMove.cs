@@ -14,6 +14,7 @@ public class PlayerMove : MonoBehaviour
     public float Speed = 10f;
     void Start()
     {
+        Speed = SavedGameData.instance.playerSpeed;
         SetTargetPosition();
     }
 

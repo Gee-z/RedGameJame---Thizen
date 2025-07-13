@@ -15,6 +15,7 @@ public class SavedGameData : MonoBehaviour
     public float defaultMult = 1f;
     public int playerScore;
     public int playerHp;
+    public int defaultHp = 5;
     public float currentObstacleSpeed;
     public float currentObstacleSpawnInterval;
     public float currentTime;
@@ -83,7 +84,7 @@ public class SavedGameData : MonoBehaviour
         currentTime = defaultTime;
         currentMult = defaultMult;
         playerScore = 0;
-        playerHp = 5;
+        playerHp = defaultHp;
         haveShield = false;
         isBig = false;
     }
