@@ -21,12 +21,12 @@ public class SlotWinChecker : MonoBehaviour
 
     void Update()
     {
-        if (CheckAllSlotsOccupied())
+        if (CheckAllSlotsOccupied() && !finish)
         {
             finish = true;
             StartCoroutine(isWin());
         }
-        else if (timer <= 0f)
+        else if (timer <= 0f && !finish)
         {
             finish = true;
             StartCoroutine(isLose());

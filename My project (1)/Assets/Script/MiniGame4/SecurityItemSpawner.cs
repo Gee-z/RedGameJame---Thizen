@@ -26,7 +26,7 @@ public class SecurityItemSpawner : MonoBehaviour
             Item item = itemObj.GetComponent<Item>();
             SpriteRenderer sr = itemObj.GetComponent<SpriteRenderer>();
 
-            bool isIllegal = Random.value < 0.3f;
+            bool isIllegal = Random.value < 0.2f;
             item.isIllegal = isIllegal;
             sr.sprite = isIllegal
                 ? illegalSprites[Random.Range(0, illegalSprites.Count)]
@@ -35,7 +35,7 @@ public class SecurityItemSpawner : MonoBehaviour
             group.items.Add(item);
 
             Vector2 offset = Random.insideUnitCircle * clusterRadius;
-            itemObj.transform.localPosition = new Vector3(offset.x, offset.y, 0);
+            itemObj.transform.localPosition = new Vector3(offset.x + Random.Range(-1.2f,1.2f), offset.y, 0);
         }
 
         group.SlideIn(centerPoint.position);

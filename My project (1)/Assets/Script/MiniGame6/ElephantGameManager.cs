@@ -14,13 +14,14 @@ public class ElephantGameManager : MonoBehaviour
     [SerializeField] private SpriteRenderer thinkingSprite;
 
     private List<FoodItem> currentFoods = new List<FoodItem>();
-    private Queue<string> thoughtQueue = new Queue<string>();
+    private List<string> thoughtQueue = new List<string>();
     private bool acceptingInput = false;
 
     public TMP_Text timerText;
     public float totalTime = 20f;
     private float timer;
     private bool gameEnded = false;
+    private string currentID;
 
     private void Start()
     {
@@ -70,7 +71,7 @@ public class ElephantGameManager : MonoBehaviour
             GameObject newFood = Instantiate(foodItems[i], spawnPoints[i].position, Quaternion.identity);
             FoodItem foodItem = newFood.GetComponent<FoodItem>();
             currentFoods.Add(foodItem);
-            thoughtQueue.Enqueue(foodItem.itemID);
+            thoughtQueue.Add(foodItem.itemID);
         }
     }
 
@@ -84,8 +85,11 @@ public class ElephantGameManager : MonoBehaviour
             StartCoroutine(isWin());
             return;
         }
-
-        string nextID = thoughtQueue.Peek();
+        int random = Random.Range(0, thoughtQueue.Count);
+        string nextID = thoughtQueue[random]; 
+        currentID = nextID;
+        Debug.Log($"Next thought: {nextID}");
+        thoughtQueue.RemoveAt(random);
         FoodItem target = currentFoods.Find(f => f != null && f.itemID == nextID);
 
         if (target != null)
@@ -97,7 +101,7 @@ public class ElephantGameManager : MonoBehaviour
 
     public void ClickedFood(Vector2 worldPoint)
     {
-        if (!acceptingInput || thoughtQueue.Count == 0) return;
+        if (!acceptingInput) return;
 
         Collider2D hit = Physics2D.OverlapPoint(worldPoint);
         if (hit != null)
@@ -105,14 +109,13 @@ public class ElephantGameManager : MonoBehaviour
             FoodItem food = hit.GetComponent<FoodItem>();
             if (food != null)
             {
-                if (food.itemID == thoughtQueue.Peek())
+                Debug.Log($"food ID{food.itemID }Next thought: {currentID}");
+                if (food.itemID == currentID)
                 {
-                    thoughtQueue.Dequeue();
                     currentFoods.Remove(food);
                     Destroy(food.gameObject);
-
                     acceptingInput = false;
-                    Invoke(nameof(ShowNextThought), 0.5f); 
+                    Invoke(nameof(ShowNextThought), 0.5f);
                 }
                 else
                 {
