@@ -9,7 +9,7 @@ public class WaterObstacleSpawn : MonoBehaviour
     [SerializeField] private GameObject[] miniGamePrefab;
     [SerializeField] private Transform[] spawnPositions;
     [SerializeField] private float spawnInterval = 3f;
-    public int minigameInterval = 20;
+    public int minigameInterval = 10;
     public float obstacleSpeed = 1f;
     public float startValue = 0.1f;
     public float endValue = 3f;
