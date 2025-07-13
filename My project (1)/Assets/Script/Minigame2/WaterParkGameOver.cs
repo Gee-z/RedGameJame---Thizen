@@ -46,9 +46,9 @@ public class WaterParkGameOver : MonoBehaviour
         SetAlpha(blackScreenRenderer, 1f);
 
         retryObject.SetActive(true);
-        //upgradeObject.SetActive(true);
+        upgradeObject.SetActive(true);
         failText1.gameObject.SetActive(true);
-        //failText2.gameObject.SetActive(true);
+        failText2.gameObject.SetActive(true);
         failText3.gameObject.SetActive(true);
     }
 
