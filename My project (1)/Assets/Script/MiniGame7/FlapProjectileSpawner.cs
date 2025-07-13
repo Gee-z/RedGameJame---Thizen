@@ -57,6 +57,7 @@ public class FlapProjectileSpawner : MonoBehaviour
             if (SavedGameData.instance != null)
             {
                 SavedGameData.instance.AddCoin(50);
+                StartCoroutine(SavedGameData.instance.GetComponent<PlayerPowerUp>().ExtraCoin());
             }
 
             if (CoinUIManager.instance != null)

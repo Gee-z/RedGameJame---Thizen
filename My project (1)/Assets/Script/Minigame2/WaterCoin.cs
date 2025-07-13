@@ -13,7 +13,6 @@ public class WaterCoin : MonoBehaviour
 
         isCollected = true;
         SavedGameData.instance.AddCoin(coinAmount);
-        CoinUIManager.instance.PlayCollectAnimation();
         Destroy(gameObject);
     }
 }

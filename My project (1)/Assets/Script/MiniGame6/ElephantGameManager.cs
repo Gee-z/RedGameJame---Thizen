@@ -132,7 +132,10 @@ public class ElephantGameManager : MonoBehaviour
         gameEnded = true;
 
         if (SavedGameData.instance != null)
+        {
             SavedGameData.instance.AddCoin(50);
+            StartCoroutine(SavedGameData.instance.GetComponent<PlayerPowerUp>().RestoreHP());
+        }
 
         if (CoinUIManager.instance != null)
             CoinUIManager.instance.PlayCollectAnimation();

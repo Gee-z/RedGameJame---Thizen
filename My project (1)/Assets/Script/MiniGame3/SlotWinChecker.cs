@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Assertions.Must;
 using UnityEngine.SceneManagement;
 
 public class SlotWinChecker : MonoBehaviour
@@ -71,6 +72,7 @@ public class SlotWinChecker : MonoBehaviour
         if (SavedGameData.instance != null)
         {
             SavedGameData.instance.AddCoin(50);
+            StartCoroutine(SavedGameData.instance.GetComponent<PlayerPowerUp>().ChangeMult());
         }
 
         if (CoinUIManager.instance != null)

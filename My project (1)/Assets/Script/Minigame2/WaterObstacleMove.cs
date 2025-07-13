@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class WaterObstacleMove : MonoBehaviour
 {
-    public WaterParkGameOver gameOverHandler;
     void Update()
     {
 
@@ -17,13 +16,7 @@ public class WaterObstacleMove : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Destroy(other.gameObject);
-            Time.timeScale = 0f;
-            if (gameOverHandler != null)
-            {
-                gameOverHandler.ShowGameOver(); 
-            }
-
+            SavedGameData.instance.ReduceHP();
         }
     }
 }

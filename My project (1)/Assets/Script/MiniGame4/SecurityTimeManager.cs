@@ -78,7 +78,10 @@ public class SecurityTimeManager : MonoBehaviour
         if (win)
         {
             if (SavedGameData.instance != null)
+            {
                 SavedGameData.instance.AddCoin(50);
+                StartCoroutine(SavedGameData.instance.GetComponent<PlayerPowerUp>().PlayerBigger());
+            }
 
             if (CoinUIManager.instance != null)
                 CoinUIManager.instance.PlayCollectAnimation();

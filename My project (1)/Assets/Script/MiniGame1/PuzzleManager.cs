@@ -197,6 +197,7 @@ public class PuzzleManager : MonoBehaviour
         if (SavedGameData.instance != null)
         {
             SavedGameData.instance.AddCoin(50);
+            StartCoroutine(SavedGameData.instance.GetComponent<PlayerPowerUp>().ActivateShield());
         }
         if (CoinUIManager.instance != null)
         {
