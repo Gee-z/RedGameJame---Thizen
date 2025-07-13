@@ -27,6 +27,7 @@ public class SlidePuzzleInput : MonoBehaviour
 
         if (context.performed)
         {
+            SlideSound.instance.PlayClick();
             swipeStartPos = pointerPos;
 
             Vector3 screenPoint = new Vector3(pointerPos.x, pointerPos.y,isCamera.nearClipPlane);

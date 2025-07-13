@@ -106,6 +106,7 @@ public class PuzzleManager : MonoBehaviour
 
         if (targetPos == emptyGridPosition)
         {
+            SlideSound.instance.PlaySlide();
             tiles[emptyGridPosition.x, emptyGridPosition.y] = tile;
             tiles[tile.gridPosition.x, tile.gridPosition.y] = null;
 

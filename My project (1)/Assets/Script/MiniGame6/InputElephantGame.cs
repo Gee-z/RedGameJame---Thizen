@@ -18,7 +18,7 @@ public class InputElephantGame : MonoBehaviour
     public void OnClick(InputAction.CallbackContext context)
     {
         if (!context.performed) return;
-
+        SlideSound.instance.PlayClick();
         Vector3 screenPoint = new Vector3(pointerPos.x, pointerPos.y, mainCamera.nearClipPlane);
         Vector3 worldPoint = mainCamera.ScreenToWorldPoint(screenPoint);
         worldPoint.z = 0f;

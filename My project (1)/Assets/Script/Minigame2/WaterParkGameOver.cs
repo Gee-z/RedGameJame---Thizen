@@ -2,22 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using TMPro;
 public class WaterParkGameOver : MonoBehaviour
 {
     public GameObject blackScreen;
-    public GameObject failText;         
-    public GameObject backToMenuObject;
+    public TextMeshProUGUI failText1;           
+    public TextMeshProUGUI failText2;
+    public GameObject upgradeObject;
+    public GameObject retryObject;
     public float fadeDuration = 1.5f;
-    public float textDropSpeed = 200f;
-    private Vector3 textStartPos;
-    private Vector3 textTargetPos;
+    private SpriteRenderer blackScreenRenderer;
     void Start()
     {
-        blackScreen.SetActive(true);
-        SetAlpha(blackScreen.GetComponent<SpriteRenderer>(), 0f);
-        failText.SetActive(false);
-        backToMenuObject.SetActive(false);
+        blackScreenRenderer = blackScreen.GetComponent<SpriteRenderer>();
+
+        failText1.gameObject.SetActive(false);
+        failText2.gameObject.SetActive(false);
+        retryObject.SetActive(false); 
+        upgradeObject.SetActive(false); 
     }
 
     public void ShowGameOver()
@@ -28,42 +30,29 @@ public class WaterParkGameOver : MonoBehaviour
     IEnumerator FadeAndShowText()
     {
 
-        SpriteRenderer sr = blackScreen.GetComponent<SpriteRenderer>();
-
         float timer = 0f;
+
         while (timer < fadeDuration)
         {
             float alpha = Mathf.Lerp(0f, 1f, timer / fadeDuration);
-            SetAlpha(sr, alpha);
+            SetAlpha(blackScreenRenderer, alpha);
             timer += Time.unscaledDeltaTime;
             yield return null;
         }
 
-        SetAlpha(sr, 1f);
+        SetAlpha(blackScreenRenderer, 1f);
 
-        failText.SetActive(true);
-        Transform textTf = failText.transform;
-        textStartPos = textTf.position + new Vector3(0, 5, 0);
-        textTargetPos = textTf.position;
-        textTf.position = textStartPos;
-
-        timer = 0f;
-        while (timer < 1f)
-        {
-            textTf.position = Vector3.Lerp(textStartPos, textTargetPos, timer);
-            timer += Time.unscaledDeltaTime * (textDropSpeed / 100f);
-            yield return null;
-        }
-
-        textTf.position = textTargetPos;
-        backToMenuObject.SetActive(true);
+        retryObject.SetActive(true);
+        upgradeObject.SetActive(true);
+        failText1.gameObject.SetActive(true);
+        failText2.gameObject.SetActive(true);
     }
 
-    private void SetAlpha(SpriteRenderer sr, float alpha)
+    void SetAlpha(SpriteRenderer sr, float alpha)
     {
-        Color color = sr.color;
-        color.a = alpha;
-        sr.color = color;
+        Color c = sr.color;
+        c.a = alpha;
+        sr.color = c;
     }
 
     public void BackToMenu()

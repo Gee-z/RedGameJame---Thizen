@@ -18,6 +18,7 @@ public class Projectile : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             Debug.Log("hit");
+            SlideSound.instance.PlayHurt();
             StartCoroutine(LoseGame());
         }
     }

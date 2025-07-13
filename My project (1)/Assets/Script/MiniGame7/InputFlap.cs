@@ -11,6 +11,7 @@ public class InputFlap : MonoBehaviour
 
     public void OnFloat(InputAction.CallbackContext context)
     {
+        SlideSound.instance.PlayClick();
         if (context.started)
         {
             isHolding = true;
