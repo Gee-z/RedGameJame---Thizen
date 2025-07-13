@@ -23,4 +23,9 @@ public class SavedGameData : MonoBehaviour
             Destroy(gameObject);
         }
     }
+    public void AddCoin(int amount = 1)
+    {
+        playerCoin += amount;
+    }
+
 }

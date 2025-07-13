@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1065117665310099362}
   - component: {fileID: 5832886379854816433}
   - component: {fileID: 8710789671671700579}
-  - component: {fileID: -6988578910021407266}
+  - component: {fileID: 2509066279695819246}
   m_Layer: 0
   m_Name: CoinLeft
   m_TagString: Untagged
@@ -166,7 +166,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &-6988578910021407266
+--- !u!114 &2509066279695819246
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -175,7 +175,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6097036510631686909}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a4a089e2330f714080d4b297ed01a8c, type: 3}
+  m_Script: {fileID: 11500000, guid: 6f01e326277dddb4eac3c02e650862de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameOverHandler: {fileID: 0}
+  coinAmount: 10
