@@ -34,7 +34,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 2
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -69,7 +69,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 16384
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -99,6 +99,19 @@ TextureImporter:
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -176,9 +189,9 @@ TextureImporter:
       name: ui pack_3
       rect:
         serializedVersion: 2
-        x: 1102
-        y: 1599
-        width: 218
+        x: 1096
+        y: 1604
+        width: 231
         height: 96
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -302,10 +315,10 @@ TextureImporter:
       name: ui pack_9
       rect:
         serializedVersion: 2
-        x: 170
-        y: 1224
-        width: 91
-        height: 84
+        x: 904
+        y: 1328
+        width: 404
+        height: 130
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -323,10 +336,10 @@ TextureImporter:
       name: ui pack_10
       rect:
         serializedVersion: 2
-        x: 394
-        y: 1037
-        width: 240
-        height: 253
+        x: 170
+        y: 1224
+        width: 91
+        height: 84
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -344,10 +357,10 @@ TextureImporter:
       name: ui pack_11
       rect:
         serializedVersion: 2
-        x: 167
-        y: 1079
-        width: 92
-        height: 96
+        x: 394
+        y: 1037
+        width: 240
+        height: 253
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -365,10 +378,10 @@ TextureImporter:
       name: ui pack_12
       rect:
         serializedVersion: 2
-        x: 169
-        y: 945
-        width: 91
-        height: 78
+        x: 735
+        y: 1080
+        width: 214
+        height: 214
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -386,6 +399,69 @@ TextureImporter:
       name: ui pack_13
       rect:
         serializedVersion: 2
+        x: 167
+        y: 1079
+        width: 92
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8ccbfd70be983a64fbcdc7fe2f0dda38
+      internalID: 1943415562
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui pack_14
+      rect:
+        serializedVersion: 2
+        x: 1080
+        y: 1142
+        width: 211
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 179e50bebc7bede45be4c82f32d399f4
+      internalID: -841354772
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui pack_15
+      rect:
+        serializedVersion: 2
+        x: 169
+        y: 945
+        width: 91
+        height: 78
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f0dbe557780ff88489eae4ecd2ff97fe
+      internalID: -529757359
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui pack_16
+      rect:
+        serializedVersion: 2
         x: 187
         y: 55
         width: 718
@@ -397,8 +473,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8ccbfd70be983a64fbcdc7fe2f0dda38
-      internalID: 1943415562
+      spriteID: 7ab1dc23968ef284cbf1191e28b71a0a
+      internalID: 1147603036
       vertices: []
       indices: 
       edges: []
@@ -420,6 +496,9 @@ TextureImporter:
       ui pack_11: 252939546
       ui pack_12: -519958477
       ui pack_13: 1943415562
+      ui pack_14: -841354772
+      ui pack_15: -529757359
+      ui pack_16: 1147603036
       ui pack_2: 1112967318
       ui pack_3: -1350452989
       ui pack_4: 560336802
