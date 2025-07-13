@@ -53,6 +53,7 @@ public class SavedGameData : MonoBehaviour
             return;
         }
         onHpReduced.Invoke();
+        SlideSound.instance.PlayHurt();
         playerHp -= amount;
     }
     public void Update()

@@ -17,7 +17,7 @@ public class Coin : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             Debug.Log("hit");
-
+            SlideSound.instance.PlayCoin();
             if (SavedGameData.instance != null)
             {
                 SavedGameData.instance.AddCoin(5);

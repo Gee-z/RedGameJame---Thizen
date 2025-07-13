@@ -24,6 +24,7 @@ public class DragAndDrop : MonoBehaviour
 
         if (context.performed)
         {
+            SlideSound.instance.PlayClick();
 
             if (isTarget != null)
             {

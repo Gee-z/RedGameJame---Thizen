@@ -102,6 +102,7 @@ public class FlapProjectileSpawner : MonoBehaviour
         Destroy(warning);
 
         Vector3 spawnPos = new Vector3(xTransform.position.x, y, 0f);
+        SlideSound.instance.PlayBird();
         Instantiate(projectilePrefab, spawnPos, Quaternion.identity);
     }
 

@@ -10,7 +10,7 @@ public class Player : MonoBehaviour
         if (other.CompareTag("DeadZone"))
         {
             Debug.Log("hit");
-
+            SlideSound.instance.PlayHurt();
             StartCoroutine(LoseGame());
         }
     }

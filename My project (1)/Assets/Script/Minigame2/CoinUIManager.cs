@@ -17,6 +17,7 @@ public class CoinUIManager : MonoBehaviour
     {
         if (coinAnimator != null)
         {
+            SlideSound.instance.PlayCoin();
             coinAnimator.SetTrigger("Collect");
         }
     }
