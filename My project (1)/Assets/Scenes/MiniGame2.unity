@@ -3133,7 +3133,7 @@ MonoBehaviour:
   - {fileID: 1930114668}
   - {fileID: 2104061687}
   spawnInterval: 3
-  minigameInterval: 10
+  minigameInterval: 5
   obstacleSpeed: 1
   startValue: 0.3
   endValue: 1.2
