@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Projectile : MonoBehaviour
 {
@@ -9,7 +10,7 @@ public class Projectile : MonoBehaviour
     void Update()
     {
         transform.Translate(Vector2.left * speed * Time.deltaTime);
-        if (transform.position.x < -12f) Destroy(gameObject);
+        if (transform.position.x < -30f) Destroy(gameObject);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -17,15 +18,13 @@ public class Projectile : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             Debug.Log("hit");
-
             StartCoroutine(LoseGame());
         }
     }
     private IEnumerator LoseGame()
     {
-        yield return new WaitForSecondsRealtime(1f);
+        yield return new WaitForSeconds(0.8f);
         Time.timeScale = 1f;
-        string previousScene = PlayerPrefs.GetString("LastScene", "MiniGame2");
-        UnityEngine.SceneManagement.SceneManager.LoadScene(previousScene);
+        SceneManager.LoadScene("MiniGame2");
     }
 }

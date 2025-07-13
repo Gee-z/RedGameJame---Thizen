@@ -32,7 +32,7 @@ public class Object : MonoBehaviour
             RaycastHit2D hit = Physics2D.Raycast(point, Vector2.zero, 0f, layerMask);
             if (hit.collider != null)
             {
-                Debug.Log("Hit: " + hit.collider.name);
+                // Debug.Log("Hit: " + hit.collider.name);
                 if (hit.collider.GetComponent<Slot>().isOccupied)
                 {
                     occupiedCount++;

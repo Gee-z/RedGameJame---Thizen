@@ -21,6 +21,7 @@ public class MiniGame : MonoBehaviour
             PlayerPrefs.SetString("LastScene", SceneManager.GetActiveScene().name);
             PlayerPrefs.Save();
             int randomIndex = Random.Range(0, miniGames.Length);
+            Debug.Log("Selected MiniGame: " + miniGames[randomIndex]);
             string chosenMiniGame = miniGames[randomIndex];
             SceneManager.LoadScene(chosenMiniGame);
         }

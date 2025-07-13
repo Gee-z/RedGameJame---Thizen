@@ -9,13 +9,13 @@ public class WaterObstacleSpawn : MonoBehaviour
     [SerializeField] private GameObject[] miniGamePrefab;
     [SerializeField] private Transform[] spawnPositions;
     [SerializeField] private float spawnInterval = 3f;
+    public int minigameInterval = 20;
     public float obstacleSpeed = 1f;
     public float startValue = 0.1f;
     public float endValue = 3f;
     public float startValueInterval = 0.1f;
     public float endValueInterval = 3f;
     public float duration = 60f;
-
     private float _elapsedTime;
     private int obstacleCount = 0;
 
@@ -58,6 +58,13 @@ public class WaterObstacleSpawn : MonoBehaviour
                     lane.RemoveAt(randomLane);
                 }
             }
+            if (obstacleCount >= minigameInterval)
+            {
+                int randomLane = Random.Range(0, lane.Count);
+                SpawnMiniGame(lane[randomLane], savedSpeed);
+                lane.RemoveAt(randomLane);
+                obstacleCount = 0;
+            }
             if (lane.Count > 0)
             {
                 int randomLane = Random.Range(0, lane.Count);
@@ -65,13 +72,7 @@ public class WaterObstacleSpawn : MonoBehaviour
                 SpawnCoin(lane[randomLane], savedSpeed);
                 lane.RemoveAt(randomLane);
             }
-
-            if (obstacleCount >= 20)
-            {
-                int randomLane = Random.Range(0, 3);
-                SpawnMiniGame(randomLane, savedSpeed);
-                obstacleCount = 0;
-            }
+            obstacleCount++;
             yield return new WaitForSeconds(spawnInterval);
         }
     }
@@ -88,7 +89,6 @@ public class WaterObstacleSpawn : MonoBehaviour
         Transform spawnPoint = spawnPositions[lane];
         GameObject Spawnedbject = Instantiate(obstacleToSpawn, spawnPoint.position, obstacleToSpawn.transform.rotation);
         Spawnedbject.GetComponent<Animator>().speed = speed;
-        obstacleCount++;
     }
     private void SpawnCoin(int lane, float speed)
     {

@@ -11,7 +11,7 @@ public class SlotWinChecker : MonoBehaviour
     private bool finish = false;
     private Slot[] allSlots;
 
-    public TextMeshProUGUI timerText; 
+    public TextMeshProUGUI timerText;
 
     void Start()
     {
@@ -20,6 +20,20 @@ public class SlotWinChecker : MonoBehaviour
     }
 
     void Update()
+    {
+        if (CheckAllSlotsOccupied())
+        {
+            finish = true;
+            StartCoroutine(isWin());
+        }
+        else if (timer <= 0f)
+        {
+            finish = true;
+            StartCoroutine(isLose());
+        }
+        UpdateTimer();
+    }
+    void UpdateTimer()
     {
         if (finish) return;
 
@@ -31,19 +45,7 @@ public class SlotWinChecker : MonoBehaviour
         }
 
         UpdateTimerText();
-
-        if (CheckAllSlotsOccupied())
-        {
-            finish = true;
-            isWin();
-        }
-        else if (timer <= 0f)
-        {
-            finish = true;
-            isLose();
-        }
     }
-
     void UpdateTimerText()
     {
         if (timerText != null)
@@ -77,9 +79,7 @@ public class SlotWinChecker : MonoBehaviour
         }
         yield return new WaitForSeconds(1f);
         Time.timeScale = 1f;
-
-        string lastScene = PlayerPrefs.GetString("LastScene", "MiniGame2");
-        SceneManager.LoadScene(lastScene);
+        SceneManager.LoadScene("MiniGame2");
     }
 
     IEnumerator isLose()
