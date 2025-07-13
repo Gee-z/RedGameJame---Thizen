@@ -8,6 +8,7 @@ public class WaterParkGameOver : MonoBehaviour
     public GameObject blackScreen;
     public TextMeshProUGUI failText1;           
     public TextMeshProUGUI failText2;
+    public TextMeshProUGUI failText3;
     public GameObject upgradeObject;
     public GameObject retryObject;
     public float fadeDuration = 1.5f;
@@ -18,6 +19,7 @@ public class WaterParkGameOver : MonoBehaviour
 
         failText1.gameObject.SetActive(false);
         failText2.gameObject.SetActive(false);
+        failText3.gameObject.SetActive(false);
         retryObject.SetActive(false); 
         upgradeObject.SetActive(false); 
     }
@@ -46,6 +48,7 @@ public class WaterParkGameOver : MonoBehaviour
         upgradeObject.SetActive(true);
         failText1.gameObject.SetActive(true);
         failText2.gameObject.SetActive(true);
+        failText3.gameObject.SetActive(true);
     }
 
     void SetAlpha(SpriteRenderer sr, float alpha)
